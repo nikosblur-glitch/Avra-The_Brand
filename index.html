@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avra The Brand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <a href="#home" class="logo-link">
+        <span class="logo-emoji">🧶</span>
+        <div class="logo-text">
+          Avra
+          <span>The Brand</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Αρχική</a>
+        <a href="#products">Συλλογή</a>
+        <a href="#about">Σχετικά</a>
+        <!-- Studio: κρυφό μέχρι login -->
+        <a href="#studio" id="nav-studio" hidden>Studio</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Google / Account -->
+        <button class="icon-btn" id="user-btn" title="Σύνδεση με Google" aria-label="Λογαριασμός">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+
+        <!-- Καλάθι -->
+        <button class="icon-btn" id="cart-btn" title="Καλάθι" aria-label="Καλάθι">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Μενού">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-x" id="mobile-x">✕</button>
+    <a href="#home">Αρχική</a>
+    <a href="#products">Συλλογή</a>
+    <a href="#about">Σχετικά</a>
+    <a href="#studio" id="mobile-studio" hidden>Studio</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">🧶 🪝 Χειροποίητο crochet</div>
+        <h1 class="hero-title" id="hero-title">
+          Τσάντες με<br/>
+          <em>χαρακτήρα</em>
+        </h1>
+        <p class="hero-desc" id="hero-desc">
+          Το Avra The Brand σχεδιάζει και δημιουργεί μοναδικές crochet τσάντες.
+          Κάθε κομμάτι πλέκεται με προσοχή στη λεπτομέρεια.
+        </p>
+        <div class="hero-ctas">
+          <a href="#products" class="btn btn-primary">Δες τη συλλογή</a>
+          <a href="#about" class="btn btn-ghost">Σχετικά</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-emojis">
+            <span class="float-1">🧶</span>
+            <span class="float-2">🪝</span>
+          </div>
+          <h3>Avra The Brand</h3>
+          <p>Νήμα · Βελονάκι · Στυλ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="sec-head aos">
+      <span class="sec-label">Συλλογή</span>
+      <h2 class="sec-title">Οι τσάντες</h2>
+      <p class="sec-desc">Χειροποίητες crochet τσάντες με καθαρό σχέδιο και ποιότητα.</p>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-wrap" id="about">
+    <div class="about-inner">
+      <div class="about-box aos">
+        <div class="about-emojis">🧶 🪝</div>
+        <p>Avra The Brand</p>
+      </div>
+      <div class="about-content aos">
+        <span class="sec-label">Σχετικά</span>
+        <h2>Σχεδιασμός &amp; τεχνική</h2>
+        <p id="about-text">
+          Κάθε τσάντα δημιουργείται με crochet τεχνική και επιλεγμένα νήματα.
+          Εστιάζουμε σε καθαρή αισθητική, άνεση και διάρκεια.
+        </p>
+        <p>
+          Από mini bags μέχρι tote και crossbody — κομμάτια για καθημερινή χρήση
+          και ιδιαίτερες στιγμές.
+        </p>
+        <div class="about-stats">
+          <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Χειροποίητο</div></div>
+          <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Σχέδια</div></div>
+          <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Λεπτομέρεια</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO — κρυφό, φαίνεται μόνο μετά Google login -->
+  <section class="section studio-sec" id="studio" hidden>
+    <div class="sec-head aos">
+      <span class="sec-label">Διαχείριση</span>
+      <h2 class="sec-title">Studio</h2>
+      <p class="sec-desc">Ανέβασε φωτογραφίες τσαντών και άλλαξε κείμενα. Μόνο για εσένα.</p>
+    </div>
+
+    <div class="studio-panel aos">
+      <div class="studio-head">
+        <h3>Content Studio</h3>
+        <span>Avra The Brand</span>
+      </div>
+      <div class="studio-body">
+
+        <!-- Ανέβασμα νέας τσάντας -->
+        <h4 class="studio-sub">Νέα τσάντα</h4>
+        <form id="product-form">
+          <div class="form-g">
+            <label for="p-name">Όνομα τσάντας</label>
+            <input type="text" id="p-name" placeholder="π.χ. Mini Bag Classic" required />
+          </div>
+          <div class="form-g">
+            <label for="p-desc">Περιγραφή</label>
+            <textarea id="p-desc" placeholder="Σύντομη περιγραφή..." required></textarea>
+          </div>
+          <div class="form-g">
+            <label for="p-price">Τιμή (€)</label>
+            <input type="number" id="p-price" min="1" step="1" placeholder="45" required />
+          </div>
+          <div class="form-g">
+            <label for="p-photo">Φωτογραφία τσάντας</label>
+            <input type="file" id="p-photo" accept="image/*" />
+            <div id="photo-preview" class="photo-preview"></div>
+          </div>
+          <div class="studio-actions">
+            <button type="submit" class="btn btn-primary">Προσθήκη τσάντας</button>
+          </div>
+        </form>
+
+        <hr class="studio-hr" />
+
+        <!-- Κείμενα σελίδας -->
+        <h4 class="studio-sub">Κείμενα σελίδας</h4>
+        <form id="texts-form">
+          <div class="form-g">
+            <label for="t-hero-title">Τίτλος Hero</label>
+            <input type="text" id="t-hero-title" placeholder="Τσάντες με &lt;em&gt;χαρακτήρα&lt;/em&gt;" />
+          </div>
+          <div class="form-g">
+            <label for="t-hero-desc">Περιγραφή Hero</label>
+            <textarea id="t-hero-desc" placeholder="Κείμενο κάτω από τον τίτλο..."></textarea>
+          </div>
+          <div class="form-g">
+            <label for="t-about">Κείμενο Σχετικά</label>
+            <textarea id="t-about" placeholder="Η περιγραφή του brand..."></textarea>
+          </div>
+          <div class="studio-actions">
+            <button type="submit" class="btn btn-primary">Αποθήκευση κειμένων</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-in">
+      <div class="footer-brand">
+        <div class="logo-text">
+          <span class="logo-emoji">🧶</span>
+          Avra <span>The Brand</span>
+        </div>
+        <p>Χειροποίητες crochet τσάντες. Νήμα &amp; βελονάκι.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Πλοήγηση</h4>
+        <a href="#home">Αρχική</a>
+        <a href="#products">Συλλογή</a>
+        <a href="#about">Σχετικά</a>
+      </div>
+      <div class="footer-col">
+        <h4>Επικοινωνία</h4>
+        <a href="mailto:hello@avrathebrand.gr">hello@avrathebrand.gr</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Avra The Brand</span>
+      <span>🧶 🪝</span>
+    </div>
+  </footer>
+
+  <!-- CART -->
+  <div class="cart-ov" id="cart-ov"></div>
+  <aside class="cart-dr" id="cart-dr">
+    <div class="cart-h">
+      <h3>Το καλάθι σου</h3>
+      <button class="cart-x" id="cart-x">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-f">
+      <div class="cart-total">
+        <span>Σύνολο</span>
+        <span id="cart-total-val">0€</span>
+      </div>
+      <button class="checkout" id="checkout-btn" disabled>Ολοκλήρωση παραγγελίας</button>
+    </div>
+  </aside>
+
+  <!-- AUTH MODAL (Google) -->
+  <div class="modal-ov" id="auth-modal">
+    <div class="modal">
+      <button class="modal-x" id="auth-x">✕</button>
+      <h2 class="modal-title">Σύνδεση</h2>
+      <p class="modal-sub">Συνδέσου με Google για να ανοίξεις το Studio.</p>
+      <div id="auth-body"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
