@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Avra The Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#1a1816;--bg2:#221f1c;--card:#2a2623;--line:#3f3a36;--sand:#3d3834;
+  --text:#f2ebe3;--muted:#a89f94;--terra:#c4785a;--terra2:#d4926e;--cream:#f5ebe0;
+  --r:16px;--t:.35s cubic-bezier(.4,0,.2,1);
+  --fd:"Cormorant Garamond",Georgia,serif;--fb:"Outfit",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+[hidden]{display:none!important}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+@keyframes slideR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+
+.aos{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.aos.visible{opacity:1;transform:translateY(0)}
+
+/* Header */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,24,22,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:var(--t)}
+.header.scrolled{box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.nav{max-width:1100px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo-link{display:flex;align-items:center;gap:.5rem;transition:var(--t)}
+.logo-link:hover{transform:scale(1.02)}
+.logo-emoji{font-size:1.5rem;line-height:1}
+.logo-text{font-family:var(--fd);font-size:1.35rem;font-weight:600;color:var(--cream)}
+.logo-text span{display:block;font-size:.75rem;font-weight:500;color:var(--terra2);margin-top:-2px;letter-spacing:.1em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.6rem}
+.nav-links a{font-size:.9rem;color:var(--muted);position:relative;transition:color var(--t)}
+.nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--terra);transition:width var(--t)}
+.nav-links a:hover,.nav-links a.active{color:var(--cream)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:.5rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.65rem 1.3rem;border-radius:999px;font-size:.88rem;font-weight:500;transition:var(--t)}
+.btn-primary{background:var(--terra);color:#1a1816;box-shadow:0 4px 18px rgba(196,120,90,.35)}
+.btn-primary:hover{background:var(--terra2);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--terra);color:var(--terra2)}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--cream);border:1px solid var(--line);transition:var(--t)}
+.icon-btn:hover{background:var(--terra);color:#1a1816;border-color:var(--terra);transform:scale(1.05)}
+.cart-count{position:absolute;top:-3px;right:-3px;background:var(--terra);color:#1a1816;font-size:.65rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0);transition:var(--t)}
+.cart-count.show{opacity:1;transform:scale(1)}
+.mobile-toggle{display:none;flex-direction:column;gap:5px;width:26px;padding:3px 0}
+.mobile-toggle span{height:2px;background:var(--cream);border-radius:2px}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 1.5rem 3.5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(196,120,90,.12),transparent),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(120,140,100,.06),transparent);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
+.hero-text{animation:fadeUp .9s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(196,120,90,.15);color:var(--terra2);padding:.4rem .95rem;border-radius:999px;font-size:.82rem;font-weight:500;margin-bottom:1.3rem;border:1px solid rgba(196,120,90,.25)}
+.hero-title{font-family:var(--fd);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:600;line-height:1.12;color:var(--cream);margin-bottom:1.1rem}
+.hero-title em{font-style:italic;color:var(--terra2);font-weight:500}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:420px;margin-bottom:1.9rem;line-height:1.7;font-weight:300}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.85rem}
+.hero-visual{animation:fadeIn 1s ease .2s both}
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2.5rem 2rem;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.hero-emojis{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.4rem;font-size:3.2rem}
+.float-1{animation:float 4.5s ease-in-out infinite;display:inline-block}
+.float-2{animation:float2 5s ease-in-out .4s infinite;display:inline-block}
+.hero-card h3{font-family:var(--fd);font-size:1.5rem;color:var(--cream);margin-bottom:.35rem}
+.hero-card p{color:var(--muted);font-size:.9rem;font-weight:300}
+
+/* Sections */
+.section{padding:4.5rem 1.5rem;max-width:1100px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:2.8rem}
+.sec-label{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:.55rem}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3.5vw,2.5rem);color:var(--cream);margin-bottom:.55rem;font-weight:600}
+.sec-desc{color:var(--muted);max-width:480px;margin:0 auto;font-size:.98rem;font-weight:300}
+
+/* Products */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
+.product-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:var(--t);display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-6px);border-color:rgba(196,120,90,.4);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.product-img{aspect-ratio:1;background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.product-img .fb{font-size:4rem;opacity:.7}
+.product-badge{position:absolute;top:.75rem;left:.75rem;background:var(--terra);color:#1a1816;font-size:.68rem;font-weight:700;padding:.25rem .6rem;border-radius:999px}
+.product-info{padding:1.1rem 1.2rem 1.25rem;flex:1;display:flex;flex-direction:column}
+.product-name{font-family:var(--fd);font-size:1.15rem;color:var(--cream);margin-bottom:.25rem}
+.product-desc{font-size:.84rem;color:var(--muted);margin-bottom:.85rem;flex:1;font-weight:300}
+.product-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.product-price{font-size:1.15rem;font-weight:600;color:var(--terra2)}
+.product-price small{font-size:.75rem;font-weight:400;color:var(--muted)}
+.add-cart{padding:.45rem .9rem;background:var(--sand);color:var(--cream);border-radius:999px;font-size:.78rem;font-weight:500;border:1px solid var(--line);transition:var(--t)}
+.add-cart:hover{background:var(--terra);color:#1a1816;border-color:var(--terra)}
+.add-cart.added{background:#5a7a4a;border-color:#5a7a4a;color:#fff}
+
+/* About */
+.about-wrap{background:var(--bg2);padding:4.5rem 1.5rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:center}
+.about-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2.5rem;text-align:center}
+.about-emojis{font-size:3.5rem;margin-bottom:.8rem;letter-spacing:.3rem}
+.about-box p{color:var(--muted);font-size:.9rem}
+.about-content h2{font-family:var(--fd);font-size:clamp(1.7rem,3vw,2.2rem);color:var(--cream);margin-bottom:1rem;font-weight:600}
+.about-content p{color:var(--muted);margin-bottom:.85rem;font-size:1rem;line-height:1.75;font-weight:300}
+.about-stats{display:flex;gap:2rem;margin-top:1.6rem}
+.stat{text-align:center}
+.stat-n{font-family:var(--fd);font-size:1.7rem;font-weight:600;color:var(--terra2)}
+.stat-l{font-size:.78rem;color:var(--muted)}
+
+/* Studio */
+.studio-sec{background:var(--bg)}
+.studio-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;max-width:640px;margin:0 auto}
+.studio-head{background:linear-gradient(135deg,#2f2b27,#3d2e28);color:var(--cream);padding:1.15rem 1.4rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.studio-head h3{font-family:var(--fd);font-size:1.2rem;font-weight:600}
+.studio-head span{font-size:.8rem;color:var(--muted)}
+.studio-body{padding:1.4rem}
+.studio-sub{font-family:var(--fd);font-size:1.1rem;color:var(--terra2);margin-bottom:1rem;font-weight:600}
+.studio-hr{border:none;border-top:1px solid var(--line);margin:1.6rem 0}
+.form-g{margin-bottom:1rem}
+.form-g label{display:block;font-size:.82rem;font-weight:500;color:var(--muted);margin-bottom:.35rem}
+.form-g input,.form-g textarea{width:100%;padding:.65rem .9rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.9rem;color:var(--text);background:var(--bg);transition:var(--t)}
+.form-g input:focus,.form-g textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(196,120,90,.15)}
+.form-g textarea{min-height:90px;resize:vertical}
+.form-g input[type="file"]{padding:.5rem;font-size:.82rem}
+.photo-preview{margin-top:.6rem}
+.photo-preview img{max-width:140px;border-radius:10px;border:1px solid var(--line)}
+.studio-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+
+/* Cart */
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;opacity:0;visibility:hidden;transition:var(--t)}
+.cart-ov.open{opacity:1;visibility:visible}
+.cart-dr{position:fixed;top:0;right:0;width:min(380px,100%);height:100%;background:var(--bg2);border-left:1px solid var(--line);z-index:2001;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.cart-dr.open{transform:translateX(0)}
+.cart-h{padding:1.1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cart-h h3{font-family:var(--fd);font-size:1.2rem;color:var(--cream)}
+.cart-x{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--line);color:var(--cream);transition:var(--t)}
+.cart-x:hover{background:var(--terra);color:#1a1816}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.25rem}
+.cart-empty{text-align:center;padding:2.5rem 1rem;color:var(--muted)}
+.cart-item{display:flex;gap:.8rem;padding:.8rem 0;border-bottom:1px solid var(--line);animation:slideR .3s ease}
+.cart-item-img{width:56px;height:56px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:1px solid var(--line)}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-img .fb{font-size:1.5rem}
+.cart-item-name{font-weight:500;color:var(--cream);font-size:.88rem}
+.cart-item-price{color:var(--terra2);font-weight:600;font-size:.88rem}
+.cart-item-qty{display:flex;align-items:center;gap:.4rem;margin-top:.3rem}
+.qty-btn{width:22px;height:22px;border-radius:50%;background:var(--card);border:1px solid var(--line);color:var(--cream);font-weight:600;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.qty-btn:hover{background:var(--terra);color:#1a1816}
+.cart-item-rm{color:var(--muted);font-size:.72rem;margin-top:.2rem}
+.cart-item-rm:hover{color:#e07070}
+.cart-f{padding:1.1rem 1.25rem;border-top:1px solid var(--line);background:var(--bg)}
+.cart-total{display:flex;justify-content:space-between;font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:.8rem}
+.checkout{width:100%;padding:.8rem;background:var(--terra);color:#1a1816;border-radius:999px;font-weight:600;font-size:.92rem;transition:var(--t)}
+.checkout:hover{background:var(--terra2)}
+.checkout:disabled{opacity:.45;cursor:not-allowed}
+
+/* Auth */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;visibility:hidden;transition:var(--t)}
+.modal-ov.open{opacity:1;visibility:visible}
+.modal{background:var(--card);border:1px solid var(--line);border-radius:16px;width:100%;max-width:380px;padding:1.85rem;box-shadow:0 24px 60px rgba(0,0,0,.45);transform:scale(.94) translateY(12px);transition:var(--t);position:relative}
+.modal-ov.open .modal{transform:scale(1) translateY(0)}
+.modal-x{position:absolute;top:.75rem;right:.75rem;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--line);color:var(--cream)}
+.modal-x:hover{background:var(--terra);color:#1a1816}
+.modal-title{font-family:var(--fd);font-size:1.45rem;color:var(--cream);text-align:center;margin-bottom:.35rem}
+.modal-sub{text-align:center;color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;font-weight:300}
+.google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:.75rem;padding:.85rem 1rem;border:1px solid #dadce0;border-radius:4px;font-weight:500;font-size:.95rem;color:#3c4043;background:#fff;transition:var(--t);font-family:"Roboto",var(--fb),sans-serif}
+.google-btn:hover{box-shadow:0 1px 3px rgba(0,0,0,.15);background:#f8f9fa}
+.google-btn svg{width:18px;height:18px;flex-shrink:0}
+.auth-note{text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;line-height:1.5}
+.user-info{display:flex;align-items:center;gap:.65rem;padding:.65rem .85rem;background:var(--bg);border:1px solid var(--line);border-radius:10px;margin-bottom:.8rem}
+.user-av{width:36px;height:36px;border-radius:50%;background:var(--terra);color:#1a1816;display:flex;align-items:center;justify-content:center;font-weight:700}
+.user-n{font-weight:500;color:var(--cream)}.user-e{font-size:.78rem;color:var(--muted)}
+.logout-btn{width:100%;margin-top:.5rem;padding:.6rem;border-radius:8px;background:var(--bg);border:1px solid var(--line);color:var(--cream);font-weight:500}
+.logout-btn:hover{border-color:#c55;color:#e88}
+
+/* Footer */
+.footer{background:#141210;color:var(--muted);padding:3rem 1.5rem 1.5rem;border-top:1px solid var(--line)}
+.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-brand .logo-text{color:var(--cream);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;font-family:var(--fd);font-size:1.2rem}
+.footer-brand .logo-text span{color:var(--terra2)}
+.footer-brand p{font-size:.88rem;line-height:1.6;font-weight:300;max-width:240px}
+.footer-col h4{font-family:var(--fd);font-size:1.05rem;color:var(--cream);margin-bottom:.9rem}
+.footer-col a{display:block;font-size:.88rem;margin-bottom:.45rem;transition:var(--t);font-weight:300}
+.footer-col a:hover{color:var(--terra2)}
+.footer-bot{max-width:1100px;margin:0 auto;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.7rem;font-size:.82rem;opacity:.75}
+
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card);color:var(--cream);border:1px solid var(--line);padding:.75rem 1.4rem;border-radius:999px;font-weight:500;font-size:.88rem;z-index:4000;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:1500;padding:4rem 1.5rem 1.5rem;transform:translateX(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:1.1rem}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:var(--fd);font-size:1.35rem;color:var(--cream);padding:.4rem 0;border-bottom:1px solid var(--line)}
+.mobile-x{position:absolute;top:1rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--cream)}
+
+@media(max-width:850px){
+  .nav-links{display:none}.mobile-toggle{display:flex}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-desc{margin:0 auto 1.8rem}.hero-ctas{justify-content:center}
+  .hero-visual{order:-1;max-width:280px;margin:0 auto}
+  .about-inner{grid-template-columns:1fr}.about-box{max-width:260px;margin:0 auto}
+  .footer-in{grid-template-columns:1fr 1fr}.about-stats{justify-content:center}
+}
+@media(max-width:550px){
+  .nav{padding:.7rem 1rem}.logo-text{font-size:1.15rem}
+  .section,.about-wrap{padding:3.2rem 1rem}
+  .footer-in{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}
+  .hero{padding:6rem 1rem 2.5rem}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <a href="#home" class="logo-link">
+      <span class="logo-emoji">🧶</span>
+      <div class="logo-text">Avra<span>The Brand</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#home">Αρχική</a>
+      <a href="#products">Συλλογή</a>
+      <a href="#about">Σχετικά</a>
+      <a href="#studio" id="nav-studio" hidden>Studio</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" id="user-btn" title="Σύνδεση με Google" aria-label="Λογαριασμός">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="icon-btn" id="cart-btn" title="Καλάθι" aria-label="Καλάθι">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Μενού"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-x" id="mobile-x">✕</button>
+  <a href="#home">Αρχική</a>
+  <a href="#products">Συλλογή</a>
+  <a href="#about">Σχετικά</a>
+  <a href="#studio" id="mobile-studio" hidden>Studio</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🧶 🪝 Χειροποίητο crochet</div>
+      <h1 class="hero-title" id="hero-title">Τσάντες με<br/><em>χαρακτήρα</em></h1>
+      <p class="hero-desc" id="hero-desc">Το Avra The Brand σχεδιάζει και δημιουργεί μοναδικές crochet τσάντες. Κάθε κομμάτι πλέκεται με προσοχή στη λεπτομέρεια.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn btn-primary">Δες τη συλλογή</a>
+        <a href="#about" class="btn btn-ghost">Σχετικά</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-emojis"><span class="float-1">🧶</span><span class="float-2">🪝</span></div>
+        <h3>Avra The Brand</h3>
+        <p>Νήμα · Βελονάκι · Στυλ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="sec-head aos">
+    <span class="sec-label">Συλλογή</span>
+    <h2 class="sec-title">Οι τσάντες</h2>
+    <p class="sec-desc">Χειροποίητες crochet τσάντες με καθαρό σχέδιο και ποιότητα.</p>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<section class="about-wrap" id="about">
+  <div class="about-inner">
+    <div class="about-box aos">
+      <div class="about-emojis">🧶 🪝</div>
+      <p>Avra The Brand</p>
+    </div>
+    <div class="about-content aos">
+      <span class="sec-label">Σχετικά</span>
+      <h2>Σχεδιασμός &amp; τεχνική</h2>
+      <p id="about-text">Κάθε τσάντα δημιουργείται με crochet τεχνική και επιλεγμένα νήματα. Εστιάζουμε σε καθαρή αισθητική, άνεση και διάρκεια.</p>
+      <p>Από mini bags μέχρι tote και crossbody — κομμάτια για καθημερινή χρήση και ιδιαίτερες στιγμές.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Χειροποίητο</div></div>
+        <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Σχέδια</div></div>
+        <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Λεπτομέρεια</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section studio-sec" id="studio" hidden>
+  <div class="sec-head aos">
+    <span class="sec-label">Owner</span>
+    <h2 class="sec-title">Studio</h2>
+    <p class="sec-desc">Μόνο εσύ βλέπεις αυτό. Ανέβασε τσάντες και άλλαξε κείμενα.</p>
+  </div>
+  <div class="studio-panel aos">
+    <div class="studio-head"><h3>Content Studio</h3><span>Avra The Brand · Owner</span></div>
+    <div class="studio-body">
+      <h4 class="studio-sub">Νέα τσάντα</h4>
+      <form id="product-form">
+        <div class="form-g"><label for="p-name">Όνομα</label><input type="text" id="p-name" placeholder="π.χ. Mini Bag Classic" required/></div>
+        <div class="form-g"><label for="p-desc">Περιγραφή</label><textarea id="p-desc" placeholder="Σύντομη περιγραφή..." required></textarea></div>
+        <div class="form-g"><label for="p-price">Τιμή (€)</label><input type="number" id="p-price" min="1" step="1" placeholder="45" required/></div>
+        <div class="form-g"><label for="p-photo">Φωτογραφία</label><input type="file" id="p-photo" accept="image/*"/><div id="photo-preview" class="photo-preview"></div></div>
+        <div class="studio-actions"><button type="submit" class="btn btn-primary">Apply — Ανέβασμα</button></div>
+      </form>
+      <hr class="studio-hr"/>
+      <h4 class="studio-sub">Κείμενα σελίδας</h4>
+      <form id="texts-form">
+        <div class="form-g"><label for="t-hero-title">Τίτλος Hero (μπορείς &lt;em&gt;κείμενο&lt;/em&gt;)</label><input type="text" id="t-hero-title" placeholder="Τσάντες με &lt;em&gt;χαρακτήρα&lt;/em&gt;"/></div>
+        <div class="form-g"><label for="t-hero-desc">Περιγραφή Hero</label><textarea id="t-hero-desc"></textarea></div>
+        <div class="form-g"><label for="t-about">Κείμενο Σχετικά</label><textarea id="t-about"></textarea></div>
+        <div class="studio-actions"><button type="submit" class="btn btn-primary">Apply — Κείμενα</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-brand">
+      <div class="logo-text"><span class="logo-emoji">🧶</span> Avra <span>The Brand</span></div>
+      <p>Χειροποίητες crochet τσάντες. Νήμα &amp; βελονάκι.</p>
+    </div>
+    <div class="footer-col"><h4>Πλοήγηση</h4><a href="#home">Αρχική</a><a href="#products">Συλλογή</a><a href="#about">Σχετικά</a></div>
+    <div class="footer-col"><h4>Επικοινωνία</h4><a href="mailto:hello@avrathebrand.gr">hello@avrathebrand.gr</a><a href="#">Instagram</a></div>
+  </div>
+  <div class="footer-bot"><span>© 2026 Avra The Brand</span><span>🧶 🪝</span></div>
+</footer>
+
+<div class="cart-ov" id="cart-ov"></div>
+<aside class="cart-dr" id="cart-dr">
+  <div class="cart-h"><h3>Το καλάθι σου</h3><button class="cart-x" id="cart-x">✕</button></div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-f">
+    <div class="cart-total"><span>Σύνολο</span><span id="cart-total-val">0€</span></div>
+    <button class="checkout" id="checkout-btn" disabled>Ολοκλήρωση παραγγελίας</button>
+  </div>
+</aside>
+
+<div class="modal-ov" id="auth-modal">
+  <div class="modal">
+    <button class="modal-x" id="auth-x">✕</button>
+    <h2 class="modal-title">Σύνδεση</h2>
+    <p class="modal-sub">Συνδέσου για πρόσβαση στο Studio (owner).</p>
+    <div id="auth-body"></div>
+  </div>
+</div>
+
+<script>
+const DEFAULT_PRODUCTS=[
+  {id:1,name:"Mini Bag Classic",desc:"Μικρή crochet τσάντα για καθημερινή χρήση.",price:45,badge:"Νέο",photo:null},
+  {id:2,name:"Tote Soft",desc:"Ευρύχωρη tote με μαλακό νήμα.",price:68,badge:null,photo:null},
+  {id:3,name:"Crossbody Line",desc:"Πρακτική crossbody με ρυθμιζόμενο λουράκι.",price:55,badge:null,photo:null},
+  {id:4,name:"Clutch Evening",desc:"Κομψό clutch για βραδινές εμφανίσεις.",price:38,badge:"Best",photo:null},
+  {id:5,name:"Shoulder Bag",desc:"Τσάντα ώμου με καθαρό σχέδιο.",price:72,badge:null,photo:null},
+  {id:6,name:"Bucket Crochet",desc:"Bucket style με σταθερή βάση.",price:62,badge:"Νέο",photo:null}
+];
+let products=JSON.parse(localStorage.getItem("avra_products")||"null")||DEFAULT_PRODUCTS;
+let cart=JSON.parse(localStorage.getItem("avra_cart")||"[]");
+let user=JSON.parse(localStorage.getItem("avra_user")||"null");
+let texts=JSON.parse(localStorage.getItem("avra_texts")||"{}");
+let pendingPhoto=null;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+document.addEventListener("DOMContentLoaded",()=>{
+  renderProducts();updateCartUI();updateAuthUI();applyTexts();updateStudioVisibility();setupScroll();setupHeader();setupEvents();
+});
+
+function renderProducts(){
+  const g=$("#products-grid");if(!g)return;
+  g.innerHTML=products.map(p=>`<article class="product-card aos"><div class="product-img">${p.badge?`<span class="product-badge">${p.badge}</span>`:""}${p.photo?`<img src="${p.photo}" alt="${p.name}"/>`:`<span class="fb">🧶</span>`}</div><div class="product-info"><h3 class="product-name">${p.name}</h3><p class="product-desc">${p.desc}</p><div class="product-foot"><span class="product-price">${p.price}€ <small>EUR</small></span><button class="add-cart" data-id="${p.id}">+ Καλάθι</button></div></div></article>`).join("");
+  $$(".aos").forEach(el=>{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.1});o.observe(el)});
+}
+function saveProducts(){localStorage.setItem("avra_products",JSON.stringify(products));renderProducts()}
+function saveCart(){localStorage.setItem("avra_cart",JSON.stringify(cart));updateCartUI()}
+function addToCart(id){const p=products.find(x=>x.id===id);if(!p)return;const e=cart.find(i=>i.id===id);if(e)e.qty++;else cart.push({id,name:p.name,price:p.price,photo:p.photo,qty:1});saveCart();showToast("Προστέθηκε: "+p.name);const btn=$(`.add-cart[data-id="${id}"]`);if(btn){btn.classList.add("added");btn.textContent="✓";setTimeout(()=>{btn.classList.remove("added");btn.textContent="+ Καλάθι"},1200)}}
+function removeFromCart(id){cart=cart.filter(i=>i.id!==id);saveCart();renderCartItems()}
+function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)removeFromCart(id);else{saveCart();renderCartItems()}}
+function cartTotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0)}
+function updateCartUI(){const n=cart.reduce((s,i)=>s+i.qty,0);const b=$("#cart-count");if(b){b.textContent=n;b.classList.toggle("show",n>0)}renderCartItems()}
+function renderCartItems(){const c=$("#cart-items"),t=$("#cart-total-val"),ck=$("#checkout-btn");if(!c)return;if(!cart.length){c.innerHTML=`<div class="cart-empty"><p>Το καλάθι είναι άδειο</p></div>`;if(t)t.textContent="0€";if(ck)ck.disabled=true;return}
+c.innerHTML=cart.map(i=>`<div class="cart-item"><div class="cart-item-img">${i.photo?`<img src="${i.photo}" alt=""/>`:`<span class="fb">🧶</span>`}</div><div><div class="cart-item-name">${i.name}</div><div class="cart-item-price">${i.price}€</div><div class="cart-item-qty"><button class="qty-btn" data-a="dec" data-id="${i.id}">−</button><span>${i.qty}</span><button class="qty-btn" data-a="inc" data-id="${i.id}">+</button></div><button class="cart-item-rm" data-id="${i.id}">Αφαίρεση</button></div></div>`).join("");if(t)t.textContent=cartTotal()+"€";if(ck)ck.disabled=false}
+function openCart(){$("#cart-ov").classList.add("open");$("#cart-dr").classList.add("open");document.body.style.overflow="hidden"}
+function closeCart(){$("#cart-ov").classList.remove("open");$("#cart-dr").classList.remove("open");document.body.style.overflow=""}
+function openAuth(){$("#auth-modal").classList.add("open");document.body.style.overflow="hidden";updateAuthBody()}
+function closeAuth(){$("#auth-modal").classList.remove("open");document.body.style.overflow=""}
+function updateAuthBody(){const b=$("#auth-body");if(!b)return;if(user){b.innerHTML=`<div class="user-info"><div class="user-av">${user.name[0]}</div><div><div class="user-n">${user.name}</div><div class="user-e">${user.email}</div></div></div><p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:.7rem">Owner mode — το Studio είναι ανοιχτό</p><button class="logout-btn" id="logout-btn">Αποσύνδεση</button>`;$("#logout-btn").onclick=logout}
+else{b.innerHTML=`<button class="google-btn" id="g-login"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Συνέχεια με Google</button><p class="auth-note">Επίσημο στυλ κουμπιού Google.<br/>Demo login για το Studio (χωρίς αποθήκευση κωδικών).<br/>Για πραγματική επιλογή account → Google Client ID.</p>`;$("#g-login").onclick=mockLogin}}
+function mockLogin(){user={name:"Owner Avra",email:"owner@avrathebrand.gr"};localStorage.setItem("avra_user",JSON.stringify(user));updateAuthUI();updateAuthBody();updateStudioVisibility();showToast("Καλωσήρθες — το Studio άνοιξε");setTimeout(closeAuth,700)}
+function logout(){user=null;localStorage.removeItem("avra_user");updateAuthUI();updateAuthBody();updateStudioVisibility();showToast("Αποσυνδέθηκες");setTimeout(closeAuth,500)}
+function updateAuthUI(){const btn=$("#user-btn");if(!btn)return;if(user){btn.innerHTML=`<span style="font-weight:700;font-size:.9rem">${user.name[0]}</span>`;btn.title=user.name}else{btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;btn.title="Σύνδεση με Google"}}
+function updateStudioVisibility(){const show=!!user;const studio=$("#studio"),nav=$("#nav-studio"),mob=$("#mobile-studio");if(studio)studio.hidden=!show;if(nav)nav.hidden=!show;if(mob)mob.hidden=!show;if(show){if($("#t-hero-title"))$("#t-hero-title").value=texts.heroTitle||"";if($("#t-hero-desc"))$("#t-hero-desc").value=texts.heroDesc||"";if($("#t-about"))$("#t-about").value=texts.about||""}}
+function applyTexts(){if(texts.heroTitle){const el=$("#hero-title");if(el)el.innerHTML=texts.heroTitle}if(texts.heroDesc){const el=$("#hero-desc");if(el)el.textContent=texts.heroDesc}if(texts.about){const el=$("#about-text");if(el)el.textContent=texts.about}}
+function showToast(m){let t=$("#toast");if(!t){t=document.createElement("div");t.id="toast";t.className="toast";document.body.appendChild(t)}t.textContent=m;t.classList.add("show");clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove("show"),2500)}
+function setupScroll(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.1});$$(".aos").forEach(el=>o.observe(el))}
+function setupHeader(){window.addEventListener("scroll",()=>$(".header")?.classList.toggle("scrolled",window.scrollY>30),{passive:true})}
+function setupEvents(){
+  document.addEventListener("click",e=>{const a=e.target.closest(".add-cart");if(a){addToCart(+a.dataset.id);return}const q=e.target.closest(".qty-btn");if(q){changeQty(+q.dataset.id,q.dataset.a==="inc"?1:-1);return}const r=e.target.closest(".cart-item-rm");if(r){removeFromCart(+r.dataset.id);return}});
+  $("#cart-btn")?.addEventListener("click",openCart);$("#cart-x")?.addEventListener("click",closeCart);$("#cart-ov")?.addEventListener("click",closeCart);
+  $("#user-btn")?.addEventListener("click",openAuth);$("#auth-x")?.addEventListener("click",closeAuth);
+  $("#auth-modal")?.addEventListener("click",e=>{if(e.target===$("#auth-modal"))closeAuth()});
+  $("#checkout-btn")?.addEventListener("click",()=>{if(!user){closeCart();openAuth();showToast("Συνδέσου πρώτα");return}showToast("Ευχαριστούμε! (Demo)");cart=[];saveCart();closeCart()});
+  $("#mobile-toggle")?.addEventListener("click",()=>$("#mobile-menu")?.classList.add("open"));
+  $("#mobile-x")?.addEventListener("click",()=>$("#mobile-menu")?.classList.remove("open"));
+  $$("#mobile-menu a").forEach(a=>a.addEventListener("click",()=>$("#mobile-menu")?.classList.remove("open")));
+  $("#p-photo")?.addEventListener("change",e=>{const file=e.target.files?.[0];pendingPhoto=null;const prev=$("#photo-preview");if(!file||!prev)return;const reader=new FileReader();reader.onload=()=>{pendingPhoto=reader.result;prev.innerHTML=`<img src="${pendingPhoto}" alt="preview"/>`};reader.readAsDataURL(file)});
+  $("#product-form")?.addEventListener("submit",e=>{e.preventDefault();if(!user)return;const name=$("#p-name").value.trim(),desc=$("#p-desc").value.trim(),price=+$("#p-price").value;if(!name||!desc||!price)return;products.unshift({id:Date.now(),name,desc,price,badge:"Νέο",photo:pendingPhoto});saveProducts();showToast("Η τσάντα ανέβηκε στη συλλογή");e.target.reset();pendingPhoto=null;if($("#photo-preview"))$("#photo-preview").innerHTML=""});
+  $("#texts-form")?.addEventListener("submit",e=>{e.preventDefault();if(!user)return;texts={heroTitle:$("#t-hero-title").value.trim(),heroDesc:$("#t-hero-desc").value.trim(),about:$("#t-about").value.trim()};localStorage.setItem("avra_texts",JSON.stringify(texts));applyTexts();showToast("Τα κείμενα εφαρμόστηκαν")});
+}
+</script>
+</body>
+</html>
